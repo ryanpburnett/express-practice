@@ -67,8 +67,15 @@ app.get('/api/animals', (req, res) => {
 })
 
 app.post('/api/animals/add', (req, res) => {
-    console.log(req.body)
-    res.end()
+
+    const newAnimal = req.body
+    // adding the property of route to our animal
+    newAnimal.route = newAnimal.animalName.replace(/ /g, "").toLowerCase()
+
+    animals.push(newAnimal)
+    console.log(animals)
+    // everything went peachy
+    res.status(200).send()
 })
 
 // Get the dang server to listen
