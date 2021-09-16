@@ -1,3 +1,5 @@
+// 'path' is a core node package for making sure different operating systems don't interpret slashes/backslashes incorrectly in routes
+const path = require('path')
 const express = require('express')
 const app = express()
 const PORT = 412
@@ -32,15 +34,26 @@ let animals = [
         route: 'elizardbeth'
     }
 ]
+/** 
+ * HTML ROUTES
+ */
 
 // home route
 app.get('/', (req, res) => {
-    res.send("ya site's workin' there, fella")
+    // __dirname is an easier way of putting in an absolute route.  It starts the route name all the way from the C drive to the working folder
+    res.sendFile(path.join(__dirname + '/public/index.html'))
 })
 
 // ummagumma
 app.get('/ummagumma', (req, res) => {
-    res.send(`<img src='https://images-na.ssl-images-amazon.com/images/I/81-Joj09kIL._SL1300_.jpg'></img>`)
+    res.sendFile(path.join(__dirname + '/public/ummagumma.html'))
+})
+
+// secret
+app.get('/secret', (req, res) => {
+    res.send(
+        `<h1>you found the secret</h1>
+        <button onclick="window.location.href='/'">go back home</button>`)
 })
 
 // :routeName is our route parameter
@@ -61,7 +74,10 @@ app.get('/api/animals/:routeName', (req, res) => {
     res.end()
 })
 
-// API routes
+/** 
+ * API routes
+ */
+
 app.get('/api/animals', (req, res) => {
     res.json(animals)
 })
