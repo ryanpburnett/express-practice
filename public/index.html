@@ -38,7 +38,8 @@
         <div id="searchHelp" class="form-text">search animal by route name</div>
       </div>
     </form> 
-
+    
+    <!-- animals appear here -->
     <div class="row">
       <div id="avatar-container" class="col-md"></div>
       <div id="character-data" class="col-md"></div>
@@ -46,5 +47,21 @@
 
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    const form = $('form')
+    const searchInput = $('#search')
+
+    form.on('submit', e => {
+      e.preventDefault()
+      const searchTerm = searchInput.val()
+
+      // GET request
+      $.ajax(`/api/animals/${searchTerm}`)
+        .then(animalData => {
+          console.log(animalData)
+        })
+    })
+
+  </script>
 </body>
 </html>
