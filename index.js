@@ -71,9 +71,7 @@ app.get('/api/animals/:routeName', (req, res) => {
     })
 
     //sending data to browser
-    res.send(
-        `${animal.animalName} is barking`
-    )
+    res.json(animal)
 
     res.end()
 })

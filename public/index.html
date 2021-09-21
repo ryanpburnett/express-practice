@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/add">Add animal</a>
@@ -40,9 +40,10 @@
     </form> 
     
     <!-- animals appear here -->
-    <div class="row">
-      <div id="avatar-container" class="col-md"></div>
-      <div id="character-data" class="col-md"></div>
+    <div id="data">
+      <div id="animalName"></div>
+      <div id="species"></div>
+      <div id="numbers"></div>
     </div>
 
   </div>
@@ -50,6 +51,10 @@
   <script>
     const form = $('form')
     const searchInput = $('#search')
+
+    const animalName = $('#animalName')
+    const species = $('#species')
+    const numbers = $('#numbers')
 
     form.on('submit', e => {
       e.preventDefault()
@@ -59,6 +64,9 @@
       $.ajax(`/api/animals/${searchTerm}`)
         .then(animalData => {
           console.log(animalData)
+          animalName.text(`Name: ${animalData.animalName}`)
+          species.text(`Species: ${animalData.species}`)
+          numbers.text(`Favorite Numbers: ${animalData.numbers}`)
         })
     })
 

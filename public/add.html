@@ -52,5 +52,31 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      const form = $('form')
+
+      const animalName = $('#animalName')
+      const species = $('#species')
+      const numbers = $('#numbers')
+
+      form.on('submit', e => {
+        e.preventDefault()
+
+        const data = {
+          animalName: animalName.val(),
+          species: species.val(),
+          numbers: numbers.val()
+        }
+
+        $.ajax({
+          url: '/api/animals/add',
+          method: "POST",
+          data: data,
+        })
+        .then(response => console.log(response))
+        .then(alert('animal added'))
+        .catch(err => console.log(err))
+      })
+    </script>
 </body>
 </html>
