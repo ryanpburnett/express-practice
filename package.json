@@ -1,7 +1,6 @@
 {
   "name": "express3",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,5 +9,15 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanpburnett/express-practice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryanpburnett/express-practice/issues"
+  },
+  "homepage": "https://github.com/ryanpburnett/express-practice#readme",
+  "description": ""
 }
